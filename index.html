@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        a: 1,
+        b: { name: "xiaoming", c: function() {} },
+        d: undefined
+      };
+      function deepClone(obj) {
+        //处理特殊情况
+        if (typeof obj === null) return null;
+        if (!typeof obj === "object") return obj;
+        if (obj instanceof Date) {
+          return new Date(obj);
+        }
+        if (obj instanceof RegExp) {
+          return new RegExp(obj);
+        }
+        // 对象或者数组  是数组new 创建数组的实例 是对象new 创建对象的实例
+        let cloneobj = new obj.constructor();
+        for (let key in obj) {
+          //不拷贝原型上的属性
+          cloneobj[key] = deepClone(obj[key]);
+        }
+        return cloneobj;
+      }
+      let result = deepClone(obj);
+      console.log(result);
+    </script>
+  </body>
+</html>
