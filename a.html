@@ -7,12 +7,11 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app">11111</div>
-    <script>
-      let app = document.getElementById("app");
-      document.body.addEventListener(app, "click", function() {
-        alert("1");
-      });
+   
+     
+      let arr = [1, 2, 3, 3, 4, "1", "2"];
+      let setary = new Set(arr);
+      console.log(Array.from(setary));
     </script>
   </body>
 </html>
